@@ -6,8 +6,16 @@ import {
   FlexItem,
   Button,
   Icon,
+  PanelBody,
+  PanelRow,
 } from "@wordpress/components";
-
+import {
+  InspectorControls,
+  BlockControls,
+  AlignmentToolbar,
+  useBlockProps,
+} from "@wordpress/block-editor";
+import { ChromePicker } from "react-color";
 (function () {
   let locked = false;
 
@@ -17,7 +25,7 @@ import {
       .getBlocks()
       .filter(function (block) {
         return (
-          block.name == "ourplugin/are-you-paying-atention" &&
+          block.name == "ourplugin/are-you-paying-attention" &&
           block.attributes.correctAnswer == undefined
         );
       });
@@ -26,6 +34,7 @@ import {
       locked = true;
       wp.data.dispatch("core/editor").lockPostSaving("noanswer");
     }
+
     if (!results.length && locked) {
       locked = false;
       wp.data.dispatch("core/editor").unlockPostSaving("noanswer");
@@ -33,22 +42,42 @@ import {
   });
 })();
 
-wp.blocks.registerBlockType("ourplugin/are-you-paying-atention", {
-  title: "Are You Paying Atention?",
-  icon: "smiley",
-  category: "common",
-  attributes: {
-    question: { type: "string" },
-    answers: { type: "array", default: [""] },
-    correctAnswer: { type: "number", default: undefined },
-  },
-  edit: EditComponent,
-  save: (props) => {
-    return null;
-  },
-});
+wp.blocks.registerBlockType(
+  "ourplugin/wordpressprueba-are-you-paying-atention",
+  {
+    title: "Are You Paying Attention?",
+    icon: "smiley",
+    category: "common",
+    attributes: {
+      question: { type: "string" },
+      answers: { type: "array", default: [""] },
+      correctAnswer: { type: "number", default: undefined },
+      bgColor: { type: "string", default: "#EBEBEB" },
+      theAlignment: { type: "string", default: "left" },
+    },
+    description: "Give your audience a chance to prove their comprehension.",
+    example: {
+      attributes: {
+        question: "What is my name?",
+        correctAnswer: 3,
+        answers: ["Meowsalot", "Barksalot", "Purrsloud", "Brad"],
+        theAlignment: "center",
+        bgColor: "#CFE8F1",
+      },
+    },
+    edit: EditComponent,
+    save: function (props) {
+      return null;
+    },
+  }
+);
 
 function EditComponent(props) {
+  const blockProps = useBlockProps({
+    className: "paying-attention-edit-block",
+    style: { backgroundColor: props.attributes.bgColor },
+  });
+
   function updateQuestion(value) {
     props.setAttributes({ question: value });
   }
@@ -64,39 +93,52 @@ function EditComponent(props) {
     }
   }
 
-  function markedAsCorrect(index) {
+  function markAsCorrect(index) {
     props.setAttributes({ correctAnswer: index });
   }
 
   return (
-    <div className="paying-attention-edit-block">
+    <div {...blockProps}>
+      <BlockControls>
+        <AlignmentToolbar
+          value={props.attributes.theAlignment}
+          onChange={(x) => props.setAttributes({ theAlignment: x })}
+        />
+      </BlockControls>
+      <InspectorControls>
+        <PanelBody title="Background Color" initialOpen={true}>
+          <PanelRow>
+            <ChromePicker
+              color={props.attributes.bgColor}
+              onChangeComplete={(x) => props.setAttributes({ bgColor: x.hex })}
+              disableAlpha={true}
+            />
+          </PanelRow>
+        </PanelBody>
+      </InspectorControls>
       <TextControl
-        style={{ fontSize: "20px" }}
         label="Question:"
         value={props.attributes.question}
         onChange={updateQuestion}
+        style={{ fontSize: "20px" }}
       />
       <p style={{ fontSize: "13px", margin: "20px 0 8px 0" }}>Answers:</p>
-      {props.attributes.answers.map((answer, index) => {
+      {props.attributes.answers.map(function (answer, index) {
         return (
           <Flex>
             <FlexBlock>
               <TextControl
+                autoFocus={answer == undefined}
                 value={answer}
                 onChange={(newValue) => {
                   const newAnswers = props.attributes.answers.concat([]);
                   newAnswers[index] = newValue;
                   props.setAttributes({ answers: newAnswers });
                 }}
-                autoFocus={answer == undefined}
               />
             </FlexBlock>
             <FlexItem>
-              <Button
-                onClick={() => {
-                  markedAsCorrect(index);
-                }}
-              >
+              <Button onClick={() => markAsCorrect(index)}>
                 <Icon
                   className="mark-as-correct"
                   icon={
@@ -111,9 +153,7 @@ function EditComponent(props) {
               <Button
                 isLink
                 className="attention-delete"
-                onClick={() => {
-                  deleteAnswer(index);
-                }}
+                onClick={() => deleteAnswer(index)}
               >
                 Delete
               </Button>
@@ -122,7 +162,7 @@ function EditComponent(props) {
         );
       })}
       <Button
-        isPrimary
+        variant="primary"
         onClick={() => {
           props.setAttributes({
             answers: props.attributes.answers.concat([undefined]),
