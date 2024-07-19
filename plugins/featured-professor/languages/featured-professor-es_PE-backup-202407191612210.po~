@@ -1,0 +1,32 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Featured Professor Block Type\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-07-19 16:01+0000\n"
+"PO-Revision-Date: 2024-07-19 16:12+0000\n"
+"Last-Translator: Rodrigo\n"
+"Language-Team: Español de Perú\n"
+"Language: es_PE\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Loco-Version: 2.6.11; wp-6.6\n"
+"X-Domain: featured-professor"
+
+#. Name of the plugin
+msgid "Featured Professor Block Type"
+msgstr ""
+
+#. Author URI of the plugin
+msgid "https://github.com/RodrigoMejiaDiaz/"
+msgstr ""
+
+#. Author of the plugin
+msgid "Rodrigo"
+msgstr ""
+
+#: build/index.js:1 src/index.js:79
+msgid "Select a professor"
+msgstr ""
