@@ -24,7 +24,7 @@ function Edit() {
     ...blockProps,
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
       className: "our-placeholder-block",
-      children: "University Event Archive Placeholder"
+      children: "University Archive Event Placeholder"
     })
   });
 }
@@ -67,7 +67,7 @@ module.exports = window["wp"]["blocks"];
   \*************************************/
 /***/ ((module) => {
 
-module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"ourblocktheme/archiveevent","title":"Fictional University Event Archive","editorScript":"file:./index.js","render":"file:./render.php"}');
+module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"ourblocktheme/archiveevent","title":"Fictional University Archive Event","editorScript":"file:./index.js","render":"file:./render.php"}');
 
 /***/ })
 

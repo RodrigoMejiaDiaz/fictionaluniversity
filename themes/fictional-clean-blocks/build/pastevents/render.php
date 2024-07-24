@@ -7,7 +7,7 @@ pageBanner(array(
  ?>
 
 <div class="container container--narrow page-section">
-    <?php
+<?php
   
   $today = date('Ymd');
   $pastEvents = new WP_Query(array(

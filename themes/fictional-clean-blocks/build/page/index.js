@@ -67,7 +67,7 @@ module.exports = window["wp"]["blocks"];
   \*****************************/
 /***/ ((module) => {
 
-module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"ourblocktheme/page","title":"Fictional University Single Page","editorScript":"file:./index.js","render":"file:./render.php"}');
+module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"ourblocktheme/page","title":"Fictional University Page","editorScript":"file:./index.js","render":"file:./render.php"}');
 
 /***/ })
 

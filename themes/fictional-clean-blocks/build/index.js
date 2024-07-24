@@ -2084,7 +2084,7 @@ const heroSlider = new _modules_HeroSlider__WEBPACK_IMPORTED_MODULE_2__["default
 const googleMap = new _modules_GoogleMap__WEBPACK_IMPORTED_MODULE_3__["default"]();
 const search = new _modules_Search__WEBPACK_IMPORTED_MODULE_4__["default"]();
 const myNotes = new _modules_MyNotes__WEBPACK_IMPORTED_MODULE_5__["default"]();
-const likes = new _modules_Like__WEBPACK_IMPORTED_MODULE_6__["default"]();
+const like = new _modules_Like__WEBPACK_IMPORTED_MODULE_6__["default"]();
 
 /***/ }),
 

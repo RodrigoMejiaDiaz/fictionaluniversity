@@ -1,13 +1,11 @@
-import { useBlockProps } from "@wordpress/block-editor";
+import { useBlockProps } from "@wordpress/block-editor"
 
 export default function Edit() {
-  const blockProps = useBlockProps();
+  const blockProps = useBlockProps()
 
   return (
     <div {...blockProps}>
-      <div className="our-placeholder-block">
-        University Event Archive Placeholder
-      </div>
+      <div className="our-placeholder-block">University Archive Event Placeholder</div>
     </div>
-  );
+  )
 }

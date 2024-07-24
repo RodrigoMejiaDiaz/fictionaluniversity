@@ -7,7 +7,7 @@ pageBanner(array(
  ?>
 
 <div class="container container--narrow page-section">
-    <?php
+<?php
   
   while(have_posts()) {
     the_post(); 
@@ -16,9 +16,8 @@ pageBanner(array(
   echo paginate_links();
 ?>
 
-    <hr class="section-break">
+<hr class="section-break">
 
-    <p>Looking for a recap of past events? <a href="<?php echo site_url('/past-events') ?>">Check out our past events
-            archive</a>.</p>
+<p>Looking for a recap of past events? <a href="<?php echo site_url('/past-events') ?>">Check out our past events archive</a>.</p>
 
 </div>
