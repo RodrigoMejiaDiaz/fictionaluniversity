@@ -207,28 +207,45 @@ class PlaceholderBlock {
 // Register our new blocks
 function our_new_blocks() {
   register_block_type_from_metadata( __DIR__ . '/build/footer' );
+  register_block_type_from_metadata( __DIR__ . '/build/header' );
+  register_block_type_from_metadata( __DIR__ . '/build/eventsandblogs' );
+  register_block_type_from_metadata( __DIR__ . '/build/singlepost' );
+  register_block_type_from_metadata( __DIR__ . '/build/page' );
+  register_block_type_from_metadata( __DIR__ . '/build/blogindex' );
+  register_block_type_from_metadata( __DIR__ . '/build/programarchive' );
+  register_block_type_from_metadata( __DIR__ . '/build/singleprogram' );
+  register_block_type_from_metadata( __DIR__ . '/build/archive' );
+  register_block_type_from_metadata( __DIR__ . '/build/singleprofessor' );
+  register_block_type_from_metadata( __DIR__ . '/build/mynotes' );
+  register_block_type_from_metadata( __DIR__ . '/build/campusarchive' );
+  register_block_type_from_metadata( __DIR__ . '/build/singlecampus' );
+  register_block_type_from_metadata( __DIR__ . '/build/archiveevent' );
+  register_block_type_from_metadata( __DIR__ . '/build/pastevents' );
+  register_block_type_from_metadata( __DIR__ . '/build/search' );
+  register_block_type_from_metadata( __DIR__ . '/build/searchresults' );
+  register_block_type_from_metadata( __DIR__ . '/build/singleevent' );
 }
 
 add_action('init', 'our_new_blocks');
 
-new PlaceholderBlock("eventsandblogs");
-new PlaceholderBlock("header");
+// new PlaceholderBlock("eventsandblogs");
+// new PlaceholderBlock("header");
 // new PlaceholderBlock("footer");
-new Placeholderblock("singlepost");
-new Placeholderblock("page");
-new Placeholderblock("blogindex");
-new Placeholderblock("programarchive");
-new Placeholderblock("singleprogram");
-new Placeholderblock("singleprofessor");
-new Placeholderblock("mynotes");
-new Placeholderblock("campusarchive");
-new PlaceholderBlock("archiveevent");
-new PlaceholderBlock("archive");
-new PlaceholderBlock("pastevents");
-new PlaceholderBlock("search");
-new PlaceholderBlock("searchresults");
-new PlaceholderBlock("singlecampus");
-new PlaceholderBlock("singleevent");
+// new Placeholderblock("singlepost");
+// new Placeholderblock("page");
+// new Placeholderblock("blogindex");
+// new Placeholderblock("programarchive");
+// new Placeholderblock("singleprogram");
+// new Placeholderblock("singleprofessor");
+// new Placeholderblock("mynotes");
+// new Placeholderblock("campusarchive");
+// new PlaceholderBlock("archiveevent");
+// new PlaceholderBlock("archive");
+// new PlaceholderBlock("pastevents");
+// new PlaceholderBlock("search");
+// new PlaceholderBlock("searchresults");
+// new PlaceholderBlock("singlecampus");
+// new PlaceholderBlock("singleevent");
 
 class JSXBlock {
   function __construct($name, $renderCallback = null, $data = null) {
