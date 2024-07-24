@@ -210,6 +210,18 @@ new PlaceholderBlock("footer");
 new Placeholderblock("singlepost");
 new Placeholderblock("page");
 new Placeholderblock("blogindex");
+new Placeholderblock("programarchive");
+new Placeholderblock("singleprogram");
+new Placeholderblock("singleprofessor");
+new Placeholderblock("mynotes");
+new Placeholderblock("campusarchive");
+new PlaceholderBlock("archiveevent");
+new PlaceholderBlock("archive");
+new PlaceholderBlock("pastevents");
+new PlaceholderBlock("search");
+new PlaceholderBlock("searchresults");
+new PlaceholderBlock("singlecampus");
+new PlaceholderBlock("singleevent");
 
 class JSXBlock {
   function __construct($name, $renderCallback = null, $data = null) {
