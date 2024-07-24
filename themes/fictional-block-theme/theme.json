@@ -69,5 +69,12 @@
     "layout": {
       "contentSize": "840px"
     }
-  }
+  },
+  "customTemplates": [
+    {
+      "name": "emptycanvas",
+      "postTypes": ["page"],
+      "title": "Empty Canvas"
+    }
+  ]
 }
