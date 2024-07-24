@@ -179,6 +179,7 @@ function makeNotePrivate($data, $postarr) {
 function our_new_blocks() {
   wp_localize_script('wp-editor', 'ourThemeData', array('themePath' => get_stylesheet_directory_uri()));
   
+  register_block_type_from_metadata(__DIR__ . '/build/genericbutton');
   register_block_type_from_metadata(__DIR__ . '/build/genericheading');
   register_block_type_from_metadata(__DIR__ . '/build/slideshow');
   register_block_type_from_metadata(__DIR__ . '/build/slide');
@@ -204,44 +205,6 @@ function our_new_blocks() {
 }
 
 add_action('init', 'our_new_blocks');
-
-
-
-class JSXBlock {
-  function __construct($name, $renderCallback = null, $data = null) {
-    $this->name = $name;
-    $this->data = $data;
-    $this->renderCallback = $renderCallback;
-    add_action('init', [$this, 'onInit']);
-  }
-
-  function ourRenderCallback($attributes, $content) {
-    ob_start();
-    require get_theme_file_path("/our-blocks/{$this->name}.php");
-    return ob_get_clean();
-  }
-
-  function onInit() {
-    wp_register_script($this->name, get_stylesheet_directory_uri() . "/build/{$this->name}.js", array('wp-blocks', 'wp-editor'));
-    
-    if ($this->data) {
-      wp_localize_script($this->name, $this->name, $this->data);
-    }
-
-    $ourArgs = array(
-      'editor_script' => $this->name
-    );
-
-    if ($this->renderCallback) {
-      $ourArgs['render_callback'] = [$this, 'ourRenderCallback'];
-    }
-
-    register_block_type("ourblocktheme/{$this->name}", $ourArgs);
-  }
-}
-
-// new JSXBlock('genericheading');
-new JSXBlock('genericbutton');
 
 
 function myallowedblocks($allowed_block_types, $editor_context) {
