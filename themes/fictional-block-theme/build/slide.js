@@ -159,6 +159,9 @@ __webpack_require__.r(__webpack_exports__);
     align: ["full"]
   },
   attributes: {
+    themeimage: {
+      type: "string"
+    },
     align: {
       type: "string",
       default: "full"
@@ -183,12 +186,20 @@ function EditComponent(props) {
           method: "GET"
         });
         props.setAttributes({
+          themeimage: "",
           imgURL: response.media_details.sizes.pageBanner.source_url
         });
       }
       go();
     }
   }, [props.attributes.imgID]);
+  (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_4__.useEffect)(() => {
+    if (props.attributes.themeimage) {
+      props.setAttributes({
+        imgURL: `${slide.themeimagepath}${props.attributes.themeimage}`
+      });
+    }
+  }, []);
   function onFileSelect(x) {
     props.setAttributes({
       imgID: x.id
