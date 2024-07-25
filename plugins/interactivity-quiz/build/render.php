@@ -26,7 +26,8 @@
     <ul>
         <?php
             foreach ($ourContext['answers'] as $answer) { ?>
-        <li <?php echo wp_interactivity_data_wp_context($answer) ?> data-wp-on--click="actions.guessAttempt">
+        <li data-wp-class--fade-incorrect="callbacks.fadedclass" data-wp-class--no-click="callbacks.noclickclass"
+            <?php echo wp_interactivity_data_wp_context($answer) ?> data-wp-on--click="actions.guessAttempt">
             <span data-wp-bind--hidden="!context.solved">
                 <span data-wp-bind--hidden="!context.correct"><svg xmlns="http://www.w3.org/2000/svg" width="20"
                         height="20" class="bi bi-check" viewBox="0 0 16 16">
