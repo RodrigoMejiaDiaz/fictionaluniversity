@@ -60,8 +60,12 @@ __webpack_require__.r(__webpack_exports__);
  * WordPress dependencies
  */
 
-(0,_wordpress_interactivity__WEBPACK_IMPORTED_MODULE_0__.store)('create-block', {
+(0,_wordpress_interactivity__WEBPACK_IMPORTED_MODULE_0__.store)("create-block", {
   actions: {
+    guessAttempt: () => {
+      const context = (0,_wordpress_interactivity__WEBPACK_IMPORTED_MODULE_0__.getContext)();
+      console.log(context);
+    },
     toggle: () => {
       const context = (0,_wordpress_interactivity__WEBPACK_IMPORTED_MODULE_0__.getContext)();
       context.isOpen = !context.isOpen;
